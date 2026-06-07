@@ -1,0 +1,24 @@
+{
+  "name": "acgf-hr-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ACGF HR — Vercel deployment (Vite client + Express serverless API)",
+  "scripts": {
+    "build": "npm --prefix client install && npm --prefix client run build",
+    "vercel-build": "npm --prefix client install && npm --prefix client run build",
+    "server": "node server/index.js",
+    "client": "npm --prefix client run dev"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.13.1",
+    "sql.js": "^1.14.1"
+  }
+}

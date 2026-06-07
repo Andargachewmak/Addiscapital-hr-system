@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --surface-0: #0a0b0f;
+    --surface-1: #111318;
+    --surface-2: #1a1c23;
+    --surface-3: #22252e;
+    --surface-4: #2d3140;
+  }
+
+  html.light {
+    color-scheme: light;
+    --surface-0: #eef1f6;
+    --surface-1: #ffffff;
+    --surface-2: #f4f6fa;
+    --surface-3: #e6e9f0;
+    --surface-4: #d4d9e4;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-surface-0 text-slate-200 antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-3 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-4;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-brand-500/30;
+  }
+
+  /* Inputs */
+  input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+    cursor: pointer;
+  }
+
+  /* Remove number input arrows */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Select arrow */
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 32px !important;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+}
+
+/* ── Light theme overrides ───────────────────────────────────────────────
+   The UI is dark-first (fixed text-white / text-slate / white-alpha classes).
+   In light mode we remap those exact utilities so contrast stays correct,
+   without touching every component. Higher specificity (.light .x) wins. */
+html.light body { color: #1e293b; }
+
+.light .text-white { color: #0f172a !important; }
+.light .text-slate-200 { color: #1e293b; }
+.light .text-slate-300 { color: #334155; }
+.light .text-slate-400 { color: #475569; }
+.light .text-slate-500 { color: #64748b; }
+.light .text-slate-600 { color: #94a3b8; }
+
+.light .border-white\/4  { border-color: rgba(15,23,42,0.06); }
+.light .border-white\/5  { border-color: rgba(15,23,42,0.07); }
+.light .border-white\/7  { border-color: rgba(15,23,42,0.09); }
+.light .border-white\/8  { border-color: rgba(15,23,42,0.10); }
+.light .border-white\/10 { border-color: rgba(15,23,42,0.12); }
+.light .border-white\/12 { border-color: rgba(15,23,42,0.14); }
+.light .border-white\/15 { border-color: rgba(15,23,42,0.16); }
+.light .border-white\/20 { border-color: rgba(15,23,42,0.22); }
+
+.light .bg-white\/2 { background-color: rgba(15,23,42,0.03); }
+.light .bg-white\/3 { background-color: rgba(15,23,42,0.04); }
+.light .bg-white\/4 { background-color: rgba(15,23,42,0.05); }
+.light .bg-white\/5 { background-color: rgba(15,23,42,0.06); }
+
+.light .divide-white\/4 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(15,23,42,0.06); }
+.light .divide-white\/5 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(15,23,42,0.07); }
